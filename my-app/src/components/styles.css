@@ -1,0 +1,70 @@
+
+.sub-main {
+  height: 100vh;
+}
+
+.header {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.add{
+  font-size: 18px;
+  margin-right: 20px;
+  background-color: blue;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.add:focus {
+  transition: transform 0.5s;
+  transform: scale(0.8);
+}
+
+#members {
+  border-collapse: collapse;
+  width: 90%;
+  margin: auto;
+}
+
+#members td, #members th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#members tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#members th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blue;
+  color: white;
+}
+#members th:nth-child(4) {
+  cursor : pointer;
+}
+
+#members td:last-child {
+  cursor: pointer;
+}
+
+.actions {
+  padding: 5px 10px;
+  background-color: blue;
+  margin-left: 5px;
+  color: white;
+  border-radius: 5px;
+}
+
+.delete {
+  background-color: orangered;
+}
