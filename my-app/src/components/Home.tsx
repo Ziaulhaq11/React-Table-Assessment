@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addEmployee, deleteEmployee, fetchEmployee } from "../store/action";
 import './styles.css'
 
@@ -8,6 +9,7 @@ const Home: React.FC = () => {
   const stateData = useSelector((st: any) => st.employees)
   const dispatch = useDispatch()
   console.log(stateData)
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(fetchEmployee())
   }, [])
@@ -38,7 +40,7 @@ const Home: React.FC = () => {
                   <td>{member.email}</td>
                   <td>{member.address}</td>
                   <td>
-                    <span className="actions edit">Edit</span>
+                    <span className="actions edit" onClick={() => navigate('/edit')}>Edit</span>
                     <span className="actions delete" onClick={() => dispatch(deleteEmployee(member.id))}>Delete</span>
                   </td>
                 </tr>
