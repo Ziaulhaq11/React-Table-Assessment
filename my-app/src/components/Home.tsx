@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { addEmployee, fetchEmployee } from "../store/action";
+import { addEmployee, deleteEmployee, fetchEmployee } from "../store/action";
 import './styles.css'
 
 const Home: React.FC = () => {
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
       <div className="sub-main">
         <div className="header">
           <h1>Employees List</h1>
-          <button className="add" onClick={() => dispatch(addEmployee())}>Add Employee</button>
+          <button className="add" onClick={() => dispatch(addEmployee('venu', 'venu@gmail.com', 'house no : 1234'))}>Add Employee</button>
         </div>
       <div className="header-2">
         <table id="members">
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
                   <td>{member.address}</td>
                   <td>
                     <span className="actions edit">Edit</span>
-                    <span className="actions delete">Delete</span>
+                    <span className="actions delete" onClick={() => dispatch(deleteEmployee(member.id))}>Delete</span>
                   </td>
                 </tr>
               )

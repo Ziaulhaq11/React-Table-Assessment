@@ -1,10 +1,10 @@
 {
   "employees": [
     {
-      "id": 1,
-      "email": "ziaulhaq11@gmail.com",
       "name": "zia",
-      "address": "address"
+      "email": "zia@gmail.com",
+      "address": "Flat no : 2378, New York city, Near Shop, United States",
+      "id": 1
     },
     {
       "name": "raj",
@@ -13,9 +13,9 @@
       "id": 2
     },
     {
-      "name": "alj",
-      "email": "alj@email.com",
-      "address": "house no ;",
+      "name": "venu",
+      "email": "venu@gmail.com",
+      "address": "house no : 1234",
       "id": 3
     }
   ]

@@ -1,5 +1,5 @@
 import Employee from '../model'
-import { ADD_EMPLOYEE, FETCH_EMPLOYEE } from './action'
+import { ADD_EMPLOYEE, DELETE_EMPLOYEE, FETCH_EMPLOYEE } from './action'
 
 interface stateInterface {
   employees: Employee[]
@@ -21,6 +21,10 @@ export default (state = initialState, action:any) => {
         ...state,
         employees : state.employees.concat(action.data)
       }
+    case DELETE_EMPLOYEE:
+      return {
+        employees: state.employees.filter((employee:any) => employee.id !== action.id )
+      };
   }
   return state;
 }
