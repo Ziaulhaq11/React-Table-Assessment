@@ -1,70 +1,57 @@
 
-.sub-main {
-  height: 100vh;
-}
-
-.header {
-  margin: 20px 0;
-  display: flex;
-  justify-content: space-between;
+.form-container {
+  background-color: #f2f2f2;
+  width: 80%;
+  margin: auto;
+  display : flex;
+  flex-direction: column;
+  justify-content : center;
   align-items: center;
-  gap: 20px;
+  border-radius: 5px;
+  padding: 50px;
 }
 
-.add{
-  font-size: 18px;
-  margin-right: 20px;
+.main-form {
+  width: 90%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form input {
+  width: 50%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border-style:outset;
+  border: 1px solid #ccc;
+}
+
+
+.email {
+  display: flex;
+  flex-direction: column;
+}
+.email p {
+  flex: 1;
+  padding: 10px 20px;
+  background-color: orange;
+  text-align: center;
+  margin-top : 0;
+  color: white;
+  border-radius: 5px;
+}
+
+.submit {
+  border-style: none;
   background-color: blue;
   color: white;
-  padding: 10px 10px;
+  padding: 10px 25px;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-}
-
-.add:focus {
-  transition: transform 0.5s;
-  transform: scale(0.8);
-}
-
-#members {
-  border-collapse: collapse;
-  width: 90%;
-  margin: auto;
-}
-
-#members td, #members th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#members tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#members th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: blue;
-  color: white;
-}
-#members th:nth-child(4) {
-  cursor : pointer;
-}
-
-#members td:last-child {
-  cursor: pointer;
-}
-
-.actions {
-  padding: 5px 10px;
-  background-color: blue;
-  margin-left: 5px;
-  color: white;
-  border-radius: 5px;
-}
-
-.delete {
-  background-color: orangered;
 }

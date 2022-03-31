@@ -4,6 +4,7 @@ import { response } from "express"
 export const ADD_EMPLOYEE = "ADD_EMPLOYEE"
 export const FETCH_EMPLOYEE = "FETCH_EMPLOYEE"
 export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE"
+export const EDIT_EMPLOYEE = "EDIT_EMPLOYEE"
 
 export const fetchEmployee = () => {
   return async (dispatch: any) => {
@@ -31,6 +32,21 @@ export const addEmployee = (name: string, email: string, address:string) => {
       dispatch({type : ADD_EMPLOYEE, data : response.data})
     }
     catch (err) {
+      throw err;
+    }
+  }
+}
+
+export const editEmployee = (id: number, name: string, email: string, address: string) => {
+  return async (dispatch:any) => {
+    try {
+      const response = await axios.patch(`http://localhost:3004/employees/${id}`, {
+        name: name,
+        email: email,
+        address : address
+      })
+      dispatch({type : EDIT_EMPLOYEE, data : response.data})
+    } catch (err) {
       throw err;
     }
   }

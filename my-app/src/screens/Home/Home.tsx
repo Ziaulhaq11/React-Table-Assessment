@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addEmployee, deleteEmployee, fetchEmployee } from "../store/action";
+import { addEmployee, deleteEmployee, fetchEmployee } from "../../store/action";
 import './styles.css'
 
 const Home: React.FC = () => {
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
       <div className="sub-main">
         <div className="header">
           <h1>Employees List</h1>
-          <button className="add" onClick={() => dispatch(addEmployee('venu', 'venu@gmail.com', 'house no : 1234'))}>Add Employee</button>
+          <button className="add" onClick={() => navigate('/add')}>Add Employee</button>
         </div>
       <div className="header-2">
         <table id="members">
@@ -32,7 +32,6 @@ const Home: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-
             {stateData.map((member: any) => {
               return (
                 <tr key={member.id}>
@@ -40,7 +39,14 @@ const Home: React.FC = () => {
                   <td>{member.email}</td>
                   <td>{member.address}</td>
                   <td>
-                    <span className="actions edit" onClick={() => navigate('/edit')}>Edit</span>
+                    <span className="actions edit" onClick={() => navigate('/edit', {
+                      state: {
+                        id: member.id,
+                        name: member.name,
+                        email: member.email,
+                        address : member.address
+                      }
+                    })}>Edit</span>
                     <span className="actions delete" onClick={() => dispatch(deleteEmployee(member.id))}>Delete</span>
                   </td>
                 </tr>

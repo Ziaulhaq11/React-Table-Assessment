@@ -1,18 +1,16 @@
 import './App.css';
 import { Route,Routes, Link } from 'react-router-dom'
-import Home from './components/Home';
-import NewEmployee from './components/NewEmployee';
-
+import Home from './screens/Home/Home';
+import AddEmployee from './screens/AddEmployee/AddEmployee';
+import EditEmployee from './screens/EditEmployee/EditEmployee';
 
 function App() {
   return (
-    <div className="App">
       <Routes>
         <Route path='/' element={<Home/> }/>
-        <Route path='/edit' element={<NewEmployee/> }/>
-        <Route path='/add' element={<NewEmployee name="test2" email="test2@email.com" address="testaddress" /> }/>
+        <Route path='/add' element={<AddEmployee/> }/>
+        <Route path='/edit' element={<EditEmployee/> }/>
       </Routes>
-    </div>
   );
 }
 
