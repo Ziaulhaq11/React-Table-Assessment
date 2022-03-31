@@ -1,6 +1,7 @@
 import './App.css';
 import { Route,Routes, Link } from 'react-router-dom'
 import Home from './components/Home';
+import NewEmployee from './components/NewEmployee';
 
 
 function App() {

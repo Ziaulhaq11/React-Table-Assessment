@@ -11,6 +11,12 @@
       "email": "raj@gmail.com",
       "address": "Flat no : 230978, New York city, Near Shop, United States",
       "id": 2
+    },
+    {
+      "name": "alj",
+      "email": "alj@email.com",
+      "address": "house no ;",
+      "id": 3
     }
   ]
 }

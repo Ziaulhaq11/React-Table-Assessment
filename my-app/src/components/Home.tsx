@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector,useDispatch } from "react-redux";
+import { addEmployee, fetchEmployee } from "../store/action";
 import './styles.css'
 
 const Home: React.FC = () => {
-  const [data, setData] = useState<any>([])
+  const stateData = useSelector((st: any) => st.employees)
+  const dispatch = useDispatch()
+  console.log(stateData)
   useEffect(() => {
-    axios.get('http://localhost:3004/employees')
-      .then(response => setData(response.data))
-      .catch(err => console.log(err))
+    dispatch(fetchEmployee())
   }, [])
 
   return (
@@ -15,7 +17,7 @@ const Home: React.FC = () => {
       <div className="sub-main">
         <div className="header">
           <h1>Employees List</h1>
-          <button className="add">Add Employee</button>
+          <button className="add" onClick={() => dispatch(addEmployee())}>Add Employee</button>
         </div>
       <div className="header-2">
         <table id="members">
@@ -29,7 +31,7 @@ const Home: React.FC = () => {
           </thead>
           <tbody>
 
-            {data.map((member: any) => {
+            {stateData.map((member: any) => {
               return (
                 <tr key={member.id}>
                   <td>{member.name}</td>
