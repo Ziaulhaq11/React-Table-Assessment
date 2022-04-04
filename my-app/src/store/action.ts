@@ -5,12 +5,15 @@ export const ADD_EMPLOYEE = "ADD_EMPLOYEE"
 export const FETCH_EMPLOYEE = "FETCH_EMPLOYEE"
 export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE"
 export const EDIT_EMPLOYEE = "EDIT_EMPLOYEE"
+export const LOADING = 'LOADING'
 
 export const fetchEmployee = () => {
   return async (dispatch: any) => {
     try {
+      dispatch({type: LOADING, loading : true})
       const response = await axios.get('http://localhost:3004/employees')
-      dispatch({type : FETCH_EMPLOYEE, data : response.data})
+      console.log(response)
+      dispatch({ type: FETCH_EMPLOYEE, data: response.data,loading : false })
     } catch(err) {
       throw err;
     }

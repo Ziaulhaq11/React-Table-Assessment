@@ -1,20 +1,29 @@
 import Employee from '../model'
-import { ADD_EMPLOYEE, DELETE_EMPLOYEE, EDIT_EMPLOYEE, FETCH_EMPLOYEE } from './action'
+import { ADD_EMPLOYEE, DELETE_EMPLOYEE, EDIT_EMPLOYEE, FETCH_EMPLOYEE, LOADING } from './action'
 
 interface stateInterface {
-  employees: Employee[]
+  employees: Employee[],
+  loading : boolean
 }
 
 const initialState:stateInterface = {
-  employees : []
+  employees: [],
+  loading : false
 }
 
 export default (state = initialState, action:any) => {
   switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        loading : true
+      }
+
     case FETCH_EMPLOYEE:
       return {
         ...state,
-        employees : action.data
+        employees: action.data,
+        loading : false
       }
     case ADD_EMPLOYEE:  
       return {
@@ -32,10 +41,12 @@ export default (state = initialState, action:any) => {
       })
       
       return {
+        ...state,
         employees : copy
       }
     case DELETE_EMPLOYEE:
       return {
+        ...state,
         employees: state.employees.filter((employee:any) => employee.id !== action.id )
       };
   }
