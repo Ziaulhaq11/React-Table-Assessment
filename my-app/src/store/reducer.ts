@@ -1,5 +1,5 @@
 import Employee from '../model'
-import { ADD_EMPLOYEE, DELETE_EMPLOYEE, EDIT_EMPLOYEE, FETCH_EMPLOYEE, LOADING } from './action'
+import { ADD_EMPLOYEE, DELETE_EMPLOYEE, EDIT_EMPLOYEE, FETCH, FETCH_EMPLOYEE, LOADING } from './action'
 
 interface stateInterface {
   employees: Employee[],
@@ -11,7 +11,9 @@ const initialState:stateInterface = {
   loading : false
 }
 
-export default (state = initialState, action:any) => {
+export default (state = initialState, action: any) => {
+  console.log(state)
+
   switch (action.type) {
     case LOADING:
       return {
@@ -19,12 +21,14 @@ export default (state = initialState, action:any) => {
         loading : true
       }
 
-    case FETCH_EMPLOYEE:
+    case FETCH:
+      console.log(state)
       return {
         ...state,
-        employees: action.data,
+        employees: action.data.data,
         loading : false
       }
+
     case ADD_EMPLOYEE:  
       return {
         ...state,
@@ -52,4 +56,6 @@ export default (state = initialState, action:any) => {
   }
   return state;
 }
+
+
 

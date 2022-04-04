@@ -1,7 +1,7 @@
 import { Formik } from "formik"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addEmployee, editEmployee } from "../store/action";
+import { add, addEmployee, edit, editEmployee } from "../store/action";
 import './styles.css'
 
 interface Props {
@@ -38,11 +38,10 @@ const EmployeeForm = (props: Props) => {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            let { name, email, address } = values
             if (id) {
-              dispatch(editEmployee(id, name, email, address))
+              dispatch(edit(values))
             } else {
-              dispatch(addEmployee(name, email, address))
+              dispatch(add(values))
             }
             navigate('/')
             setSubmitting(true);

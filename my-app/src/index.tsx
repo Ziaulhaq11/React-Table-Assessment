@@ -4,11 +4,20 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import thunk from 'redux-thunk'
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from "react-redux";
 import employeeReducer from './store/reducer'
+import createSagaMiddleware from '@redux-saga/core';
+import { watcherSaga } from './store/action';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(employeeReducer, applyMiddleware(thunk))
+const reducer = combineReducers({
+  empReducer : employeeReducer
+})
+const sagaMiddleware = createSagaMiddleware()
+const middleware = [sagaMiddleware]
+const store = createStore(reducer, {} ,composeWithDevTools(applyMiddleware(...middleware)))
+sagaMiddleware.run(watcherSaga)
 // const container: any = document.getElementById('root')
 // const root = ReactDOMClient.createRoot(container)
 ReactDOM.render(

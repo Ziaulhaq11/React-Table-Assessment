@@ -2,18 +2,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addEmployee, deleteEmployee, fetchEmployee } from "../../store/action";
+import { addEmployee, delet, deleteEmployee, fetchEmployee, start } from "../../store/action";
 import './styles.css'
 
 const Home: React.FC = () => {
-  const stateData = useSelector((st: any) => st.employees)
-  const loading = useSelector((st: any) => st.loading)
+  const stateData = useSelector((st: any) => st.empReducer.employees)
+  const loading = useSelector((st: any) => st.empReducer.loading)
 
   const dispatch = useDispatch()
   console.log(stateData)
   const navigate = useNavigate()
   useEffect(() => {
-    dispatch(fetchEmployee())
+    dispatch(start())
   }, [])
 
   return (
@@ -52,7 +52,7 @@ const Home: React.FC = () => {
                             address: address
                           }
                         })}>Edit</span>
-                        <span className="actions delete" onClick={() => dispatch(deleteEmployee(id))}>Delete</span>
+                        <span className="actions delete" onClick={() => dispatch(delet(id))}>Delete</span>
                       </td>
                     </tr>
                   )
